@@ -1,0 +1,503 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "challenge 8",
+    "version": "1.0.0",
+    "title": "Challenge 8",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "players",
+      "description": "Everything about players"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/players": {
+      "get": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Finds Pets by status",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "object",
+                    "example": {
+                      "id": "1 \"username\":\"kevin\""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "filed to get data player",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retrieving players."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Add a new player to the database",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "username": {
+                  "type": "string",
+                  "example": "kevin"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "kevin@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "123abc"
+                },
+                "exp": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Invalid input",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "object",
+                    "example": {
+                      "id": "1 \"username\":\"kevin\""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "filed to get data player",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Some error occurred while retrieving players."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Finds player by id",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "player",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "player find byId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "object",
+                    "example": {
+                      "id": "1 \"username\":\"kevin\""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "filed",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Error retrieving Player with id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Update an existing player",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name":"id",
+            "in":"path",
+            "required":true,
+            "type":"integer"
+          },
+          {
+            "in": "body",
+            "name": "id",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "username": {
+                  "type": "string",
+                  "example": "kevin"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "kevin@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "123abc"
+                },
+                "experience": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "object",
+                    "example": {
+                      "id": "1 \"username\":\"kevin\""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "FAILED",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Cannot update Player with id=${id}. Maybe Player was not found or req.body is empty!"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Error updating Player with id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Deletes a player",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "player",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Player id to delete",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Player was deleted successfully!"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "player not found",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "player not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Could not delete Player with id",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Could not delete Player with id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/exp/{id}": {
+      "post": {
+        "tags": [
+          "player"
+        ],
+        "summary": "update experience by id",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exp": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Player with id=${id} has more experience."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "FAILED",
+            "schema": {
+              "type": "object",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Cannot update Player with id=${id}!"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Token": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  }
+}

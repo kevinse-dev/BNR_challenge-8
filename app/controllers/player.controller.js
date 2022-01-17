@@ -60,6 +60,7 @@ exports.findAll = (req, res) => {
     } 
     })
     .then(data => {
+      console.log(data);
       res.status(200).json({
         result: "SUCCESS",
         message: data
